@@ -43,7 +43,7 @@ def handle_one_file(file_path, output_name):
 
 
 def main():
-    folder_path = '/home/longcg18/workspace/kissat_arminbiere/output'
+    folder_path = '/home/anhpham197/anhpham/kissat_arminbiere/output_v3'
     lst_dir = os.listdir(folder_path)
     for dir_ in lst_dir:
         if dir_.endswith('.txt'):

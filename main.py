@@ -30,6 +30,10 @@ def handleAnItem(raw):
             obj['status'] = line if line == 'UNKNOWN' else line[2:]
         elif line.startswith('c process-time'):
             obj['process_time'] = line[len('c process-time: '):]
+        elif line.startswith('c p'):
+            obj['num vars'] = line[len('c p: '):]
+        elif line.startswith('c cnf'):
+            obj['num clauses'] = line[len('c cnf: '):]
         elif '.cnf' in line:
             obj['file'] = line[2:]
     return obj

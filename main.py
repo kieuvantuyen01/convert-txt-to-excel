@@ -77,7 +77,7 @@ def process(folder_path):
 window = tk.Tk()
 window.title("Convert txt to excel")
 window.geometry("800x400")
-window.resizable(0, 0)
+window.resizable(1, 1)
 
 # Select mode
 mode = tk.StringVar()
@@ -98,7 +98,13 @@ def select_folder():
     folder_selected = filedialog.askdirectory()
     folder_path.set(folder_selected)
 
-folder_path.set("C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4")
+# set folder_path default value base on OS
+# if Windows OS then folder_path is "C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4"
+# else folder_path is "/home/anh/kissat_arminbiere/output_v4"
+if os.name == 'nt':
+    folder_path.set("C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4")
+else:
+    folder_path.set("/home/anh/kissat_arminbiere/output_v4")
 folder_path_entry = tk.Entry(window, width=80, textvariable=folder_path)
 folder_path_entry.grid(column=1, row=1)
 folder_path_button = tk.Button(window, text="Select folder", command=select_folder)

@@ -117,7 +117,14 @@ def select_file():
     file_selected = filedialog.askopenfilename()
     file_path.set(file_selected)
 
-file_path.set("C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4/binary/ALO.txt")
+# set file_path default value base on OS
+# if Windows OS then file_path is "C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4/binary/ALO.txt"
+# else file_path is "/home/anh/kissat_arminbiere/output_v4/binary/ALO.txt"
+if os.name == 'nt':
+    file_path.set("C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4/binary/ALO.txt")
+else:
+    file_path.set("/home/anh/kissat_arminbiere/output_v4/binary/ALO.txt")
+    
 file_path_entry = tk.Entry(window, width=80, textvariable=file_path)
 file_path_entry.grid(column=1, row=2)
 file_path_button = tk.Button(window, text="Select file", command=select_file)

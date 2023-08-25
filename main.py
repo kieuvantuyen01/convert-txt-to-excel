@@ -31,9 +31,9 @@ def handleAnItem(raw):
         elif line.startswith('c process-time'):
             obj['process_time'] = line[len('c process-time: '):]
         elif line.startswith('c p'):
-            obj['num vars'] = line[len('c p: '):]
+            obj['num vars'] = line[len('c p '):]
         elif line.startswith('c cnf'):
-            obj['num clauses'] = line[len('c cnf: '):]
+            obj['num clauses'] = line[len('c cnf '):]
         elif '.cnf' in line:
             obj['file'] = line[2:]
     return obj
@@ -124,7 +124,7 @@ if os.name == 'nt':
     file_path.set("C:/Users/TuyenKV/OneDrive - Tuyenkieuvan/Master/MAPF/kissat_arminbiere/output_v4/binary/ALO.txt")
 else:
     file_path.set("/home/anh/kissat_arminbiere/output_v4/binary/ALO.txt")
-    
+
 file_path_entry = tk.Entry(window, width=80, textvariable=file_path)
 file_path_entry.grid(column=1, row=2)
 file_path_button = tk.Button(window, text="Select file", command=select_file)
